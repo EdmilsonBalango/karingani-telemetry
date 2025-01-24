@@ -8,6 +8,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
+import NetworkDiagram from "@/components/ui/networkDiagram";
 import { Chart } from "@/components/ui/pieChart";
 import { Separator } from "@/components/ui/separator"
 import {
@@ -17,8 +18,31 @@ import {
 } from "@/components/ui/sidebar"
 import { TotalConsumeChart } from "@/components/ui/totalConsumeChart";
 import { SatelliteDish, Droplet } from "lucide-react";
-
+import {DevicesTable} from "@/components/ui/devicesTable"
 export default function Home() {
+    const data = {
+        gateway: {
+          id: "gateway1",
+          name: "Switch1",
+          type: "UISP Switch",
+          speed: "1.00 Gbps",
+        },
+        devices: [
+          {
+            id: "device1",
+            name: "SSU Tower - Dzonge",
+            type: "airFiber 5XHD",
+            speed: "1.00 Gbps",
+            linkSpeed: "1.09 Gbps",
+          },
+          {
+            id: "device2",
+            name: "SSU Access Point",
+            type: "LTU-Rocket",
+            speed: "1.00 Gbps",
+          },
+        ],
+      };
   return (
     <SidebarInset>
       <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -81,7 +105,7 @@ export default function Home() {
             
           </div>
           <div className="min-h-[100vh] flex-1 rounded-xl md:min-h-min h-[30vh]">
-            <TotalConsumeChart />
+            <DevicesTable />
           </div>
         </div>
     </SidebarInset>
